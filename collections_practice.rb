@@ -23,16 +23,73 @@ def count_elements(array)
 end
 
 def merge_data(keys, data)
-  merged =[]
-	keys.each do |names|
-    names = name[:first_name]
-		data.each do |attributes|
-      if attributes[name]
-			mrg = attributes[name]
-      mrg[:first_name] = name
-      merged << mrg
+merged = []
+  keys.each do |hashes|
+    data.each do |attributes|
+      attributes.each do |name, value|
+        if hashes[:first_name] == name
+          merged << hashes.merge(value)
+        end
       end
-		end
-	end
-	merged
+    end
+  end
+merged
 end
+
+def find_cool(array)
+cool_group = []
+  array.each do |i|
+    i.each do |k, v|
+      if k = :temperature and v == "cool"
+        cool_group << i
+      end
+    end
+  end
+  cool_group
+end
+
+def organize_schools(schools)
+  organized_schools = { }
+  schools.each do |school_names, locations|
+    locations.each do |location, value|
+      if organized_schools[value].nil?
+        organized_schools[value] = [ ]
+        organized_schools[value] << school_names
+      else
+        organized_schools[value] << school_names
+      end
+    end
+  end
+  organized_schools
+end
+
+
+#  let(:organized_schools) {
+#   {"NYC"=>["flatiron school bk", "flatiron school", "general assembly"],
+#    "SF"=>["dev boot camp", "Hack Reactor"],
+#    "Chicago"=>["dev boot camp chicago"]}
+# }
+
+# let(:schools) {
+#   {
+#     "flatiron school bk" => {
+#       :location => "NYC"
+#     },
+#     "flatiron school" => {
+#       :location => "NYC"
+#     },
+#     "dev boot camp" => {
+#       :location => "SF"
+#     },
+#     "dev boot camp chicago" => {
+#       :location => "Chicago"
+#     },
+#     "general assembly" => {
+#       :location => "NYC"
+#     },
+#     "Hack Reactor" => {
+#       :location => "SF"
+#     }
+#   }
+# }
+#
