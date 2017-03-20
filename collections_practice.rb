@@ -15,21 +15,11 @@ def remove_non_strings(a)
 end
 
 def count_elements(a)
-  count = []
-  a.each do |x|
-    x.each do |sym,name|
-      count << {name: name, count: 0}
-    end
+  a.map do |x|
+    x[:count] = 0
+    a.each { |y| x[:count] += 1 if x[:name] == y[:name] }
   end
-  count.uniq!
-  a.each do |x|
-    x.each do |sym,name|
-      count.each do |c|
-        c[:count] += 1 if name == c[:name]
-      end
-    end
-  end
-  count
+  a.uniq
 end
 
 =begin
