@@ -1,4 +1,5 @@
 # your code goes here
+require 'pry'
 def begins_with_r(array)
 	array.all? { |el| el.start_with?("r") }
 end
@@ -25,35 +26,29 @@ def count_elements(hsh)
 end
 
 def merge_data(keys, data)
-	global_hsh = []
-	global_hsh2 = []
-
-	data.each	do |key| 
-
-		key.each do |el, i|
-
-				global_hsh << {:first_name => el}
-				global_hsh2 << i
-
-		end
-
-	end
-
-	last_hsh = []
-
+	new_hsh = []
 
 	i = 0
 
-	while i < keys.length
+	# data is an array with hash inside
+	# get hash with data[0] and iterate through it
+	data[0].each do |key, val|
 
-		last_hsh << global_hsh[i].merge(global_hsh2[i])
+		# temp hsh inside the loop initialized with {:firstname => "blake|| ashley" }
+		inside_hsh = keys[i]
 
+		# find the data attributes that belong to "blake" || "ashley" from data and iterate through them
+		data[0][key].each do |k, v|
+			inside_hsh[k] = v
+		end
+
+		# push temp hsh to global array of hsh
+		new_hsh << inside_hsh
 
 		i += 1
 
 	end
-
-	last_hsh
+	new_hsh
 end
 
 def find_cool(cool)
