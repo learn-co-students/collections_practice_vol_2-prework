@@ -41,18 +41,18 @@ end
 
 
 def merge_data(keys, data)
-  new_keys_1 = {keys[0].keys.to_a[0] => data.to_a[0].to_a[0][0]}
-  new_data_1 = new_keys_1.merge(data[0].values.to_a[0])
-  new_keys_2 = {keys[1].keys.to_a[0] => data.to_a[0].to_a[1][0]}
-  new_data_2 = new_keys_2.merge(data[0].values.to_a[1])
- [new_data_1, new_data_2]
+  [keys[0].merge(data[0].values[0]), keys[1].merge(data[0].values[1])]
 end
 
 
 def find_cool(cool)
-  if cool[1].values[1] == "cool"
-    [cool[1]]
+  cool_arr = []
+  cool.each do |el|
+    if el.key("cool")
+      cool_arr << el
+    end
   end
+  cool_arr
 end
 
 
