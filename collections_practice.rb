@@ -38,11 +38,11 @@ end
 
 
 
-def merge_data(val1, val2)
+def merge_data(name_hash_array, data_hash_array)
     solution = []  #container for our answer
-    val1.each do |person_name|  #iterate through the names hash
+    name_hash_array.each do |person_name|  #iterate through the names hash
         name = person_name[:first_name]   #store the name key to access the person_data hashes in val2
-        val2.each do |person_data|  #iterate through the person_data array, containing the information we need to match.
+        data_hash_array.each do |person_data|  #iterate through the person_data array, containing the information we need to match.
             if person_data[name] #if the array has a valid value with the key of the name we stored earlier
                 merger = person_data[name] #use the key to access the first has with the matching information, we store the info as #merger
                 merger[:first_name] = name #make a key-value pair with the key of :first_name and the value of the name
