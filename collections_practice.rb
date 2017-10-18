@@ -1,42 +1,27 @@
-def begins_with_r(array) #working
-    i = 0
-    counter = 0
-    
-    while i < array.size
-        if array[i].start_with?("r")
-            counter += 1
-        else
-            i += 1
-        end
-    i += 1
-    end
-    counter == array.size
+require 'pry'
+
+def begins_with_r(tools)
+  return false if tools.find {|word| !word.start_with?("r")}
+  else
+    true
 end
 
-def contain_a(array) #working
-    array.select do |words|
-        words.include?("a")
-    end
+def contain_a(array)
+  array.select {|element| element.include?("a")}
 end
 
-def first_wa(array) #working
-    array.find do |starts|
-        starts[0] == "w" && starts[1] == "a"
-    end
+def first_wa(array)
+  array.find {|element| element[0] == "w" && element[1] == "a"}
 end
 
-def remove_non_strings(array) #working
-    array.delete_if do |element|
-        element.class != String
-    end
+def remove_non_strings(array)
+  array.delete_if {|element| element.class != String}
 end
 
 def count_elements(collection) #working
     new_array = collection.uniq
     new_array.uniq { |val| val.store(:count, collection.count(val)) }
 end
-
-
 
 def merge_data(name_hash_array, data_hash_array)
     solution = []  #container for our answer
@@ -106,11 +91,3 @@ end
  }
 
 =end
-
-
-
-
-
-
-
-
