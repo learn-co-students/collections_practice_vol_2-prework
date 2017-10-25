@@ -75,21 +75,25 @@ def count_elements (array)
   final.uniq { |key| key.first}
 end
 
-def merge_data (hash1, hash2)
-  final = []
-
-  hash1.each do |x|
-   final << x
+def merge_data (arr1, arr2)
+  newarr = []
+arr1.each do |y|
+  firstname = y[:first_name]
+  arr2.each do |x|
+    x.keys.each do |z|
+      if(z == firstname)
+        info = x[z]
+        person = {}
+        person[:first_name] = firstname
+        info.keys.each do |a|
+        person[a]=info[a]
+        end
+        newarr.push(person)
+      end
+    end
   end
-
-
-  final[0][:awesomeness] = 10
-  final[0][:height] = "74"
-  final[0][:last_name] = "johnson"
-  final[1][:awesomeness] = 9
-  final[1][:height] = 60
-  final[1][:last_name] = "dubs"
-  return final
+end
+return newarr
 
 end
 
