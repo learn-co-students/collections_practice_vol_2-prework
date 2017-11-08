@@ -26,17 +26,15 @@ def remove_non_strings(array)
 end
 
 #count_elements count how many times something appears in an array
-
-#       expected: [{:name=>"blake", :count=>2}, {:name=>"ashley", :count=>1}]
-#            got: {{:name=>"blake"}=>2, {:name=>"ashley"}=>1}
 def count_elements(array)
   counts = Hash.new 0
+  unique_elements = array.uniq
 
-  array.each do |item|
-    counts[item] += 1
+  unique_elements.each do |item|
+    item[:count] = array.count(item)
   end
 
-  counts
+  unique_elements
 end
 
 #merge_data combines two nested data structures into one
