@@ -23,8 +23,15 @@ def first_wa(array)
 end
 
 def remove_non_strings(array)
-  array.each.with_index do |element|
-    if element.is_a? String
+  newArr = []
+  array.any? do |word|
+     if word.is_a? String
+       newArr.push(word)
+     end
+  end
+  return newArr
+end
 
-  end{ |element| x.is_a? Integer }
+def count_elements(array)
+
 end
