@@ -33,5 +33,9 @@ def remove_non_strings(array)
 end
 
 def count_elements(array)
+  array.group_by(&:itself).map{ |k, v| k.merge(count: v.length) }
+end
 
+def merge_data(keys, data)
+  keys[0].values.map.with_index { |v, i| data[i].merge(v) }
 end
