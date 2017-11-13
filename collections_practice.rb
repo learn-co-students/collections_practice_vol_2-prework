@@ -1,4 +1,4 @@
-
+require 'pry'
 
 def begins_with_r(array)
   rChecker = []
@@ -46,10 +46,14 @@ def find_cool(cool)
   cool_hashes = []
   cool.each do |hash|
     hash.each do |k, v|
-      if k == "cool"
+      if v == "cool"
         cool_hashes.push(hash)
       end
     end
   end
   cool_hashes
+end
+
+def organize_schools(schools)
+  binding.pry
 end
