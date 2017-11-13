@@ -55,5 +55,13 @@ def find_cool(cool)
 end
 
 def organize_schools(schools)
-  binding.pry
+  organized_hash = {}
+  schools.each do |k, v|
+    v.each do |key, value|
+      tempArr = []
+      tempArr.push(k)
+      organized_hash[value] = tempArr
+    end
+  end
+  organized_hash
 end
