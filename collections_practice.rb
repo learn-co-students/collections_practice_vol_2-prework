@@ -56,11 +56,22 @@ end
 
 def organize_schools(schools)
   organized_hash = {}
-  schools.each do |k, v|
-    v.each do |key, value|
-      tempArr = []
-      tempArr.push(k)
-      organized_hash[value] = tempArr
+  new_york = []
+  san_fran = []
+  chi_town = []
+  schools.each do |school, info|
+    info.each do |loc, city|
+      if city == "NYC"
+        new_york.push(school)
+        organized_hash[city] = new_york
+      elsif city == "SF"
+        san_fran.push(school)
+        organized_hash[city] = san_fran
+      else
+        chi_town.push(school)
+        organized_hash[city] = chi_town
+      end
+      # binding.pry
     end
   end
   organized_hash
