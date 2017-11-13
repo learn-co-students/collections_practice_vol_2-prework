@@ -1,3 +1,5 @@
+
+
 def begins_with_r(array)
   rChecker = []
   array.each do |word|
@@ -37,5 +39,17 @@ def count_elements(array)
 end
 
 def merge_data(keys, data)
-  keys[0].values.map.with_index { |v, i| data[i].merge(v) }
+  data[0].values.map.with_index { |v, i| keys[i].merge(v) }
+end
+
+def find_cool(cool)
+  cool_hashes = []
+  cool.each do |hash|
+    hash.each do |k, v|
+      if k == "cool"
+        cool_hashes.push(hash)
+      end
+    end
+  end
+  cool_hashes
 end
