@@ -47,10 +47,27 @@ end
 
 #find_cool find all cool hashes
 def find_cool(hashes)
-
+  hashes.select { |hash| hash.has_value?("cool") }
 end
 
 #organize_schools organizes the schools by location
 def organize_schools(schools)
+ #get uniq list of locations
+ places = []
+ places_by_hash = {}
 
+ places = schools.values.collect do |location|
+   location[:location]
+ end
+
+ #get rid of duplicates, add each item in array to hash
+ places.uniq.collect do |city|
+   places_by_hash.merge!( {city => []} )
+ end
+
+ schools.each do |school, city|
+   places_by_hash[city[:location]] << school
+ end
+
+ places_by_hash
 end
