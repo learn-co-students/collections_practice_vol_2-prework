@@ -37,8 +37,11 @@ def count_elements(array)
   unique_elements
 end
 
-#merge_data combines two nested data structures into one
 def merge_data(data1, data2)
+
+  data1.map do |entry|
+    data2.first[entry[:first_name]].merge(entry)
+  end
 
 end
 
