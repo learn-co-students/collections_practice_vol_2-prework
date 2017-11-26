@@ -1,4 +1,5 @@
 # your code goes here
+require 'pry'
 def begins_with_r(array)
   array.all? {|word| word.start_with?("r")}
 end
@@ -15,27 +16,21 @@ def remove_non_strings(array)
   array.select {|word| word.is_a?(String)}
 end
 
+#how many times something appears in an array
 def count_elements(array)
-  array.each do |new_hash|
-    new_hash[:count] = 0
-    name = new_hash[:name]
-  array.each do |hash|
-    if hash[:name] == name
-      new_hash[:count] +=1
-    end
-   end
- end.uniq
+  array.each_with_object(Hash.new(0)){|arr, hash| hash[arr[:name]] += 1}.map{|key, value|{:name=>key, :count=>value}}
 end
 
+#combine two nested data structures in one
 def merge_data(keys, values)
   new_hash = []
-  keys.each do |name|
-    name = name[:first_name]
+  keys.each do |names|
+    value = names[:first_name]
     values.each do |information|
-      if information[name]
-        stored_data = information[name]
-        stored_data[:first_name] = name
-        new_hash << stored_data
+      if information[value]
+      data = information[value]
+      data[:first_name] = value
+      new_hash << data
       end
     end
   end
@@ -43,24 +38,39 @@ def merge_data(keys, values)
 end
 
 def find_cool(hashes)
-  cool_array = []
-  hashes.each do |value|
-    if value[:temperature] == "cool"
-      cool_array << value
+  temperature = []
+  hashes.each do |hash|
+    if hash[:temperature] == "cool"
+      temperature << hash
     end
   end
- cool_array
+  temperature
 end
 
 def organize_schools(schools)
-  organized_schools = {}
-  schools.each do |school, school_location|
-    city = school_location[:location]
-    if organized_schools[city]
-       organized_schools[city] << school
-    else organized_schools[city] = []
-         organized_schools[city] << school
-       end
-     end
-   organized_schools
+  locations = {}
+  schools.each do |school, location|
+    location.each do |description, city|
+      if locations[city]
+        nil
+      else
+        locations[city] = []
+      end
+      locations[city] << school
+    end
+  end
+locations
 end
+
+
+# def count_elements(array)
+#   array.each do |new_hash|
+#     new_hash[:count] = 0
+#     name = new_hash[:name]
+#   array.each do |hash|
+#     if hash[:name] == name
+#       new_hash[:count] +=1
+#     end
+#    end
+#  end.uniq
+# end
