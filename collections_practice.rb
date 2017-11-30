@@ -30,9 +30,58 @@ def remove_non_strings(arr)
 end
 
 def count_elements(arr)
-  arr.each_with_object(Hash.new(0)) {|arr, counts| counts[arr] += 1}
+  count = []
+  i = 0
+  arr.each do |x|
+    if !count.any? {|h| h[:name] == x[:name]}
+      count[i] = {}
+      count[i] = x
+      count[i][:count] = arr.count(x)
+      i += 1
+    end
+  end
+  count
 end
 
 def merge_data(keys, data)
-  keys.flatten
+  arr = []
+  i = 0
+  keys.each do |x|
+    arr[i] = {}
+    arr[i] = x
+    i += 1
+  end
+  h = 0
+  data.each do |j|
+    j.each do |k, l|
+      arr[h].merge!(l)
+      h += 1
+    end
+  end
+  arr
+end
+
+def find_cool(temps)
+  arr = []
+  temps.each do |x|
+    if x[:temperature] == "cool"
+      arr.push(x)
+    end
+  end
+  arr
+end
+
+def organize_schools(schools)
+  hash = {}
+  schools.each do |school, loc_hash|
+    loc_hash.each do |loc, city|
+      if hash.has_key?(city)
+        hash[city] << school
+      else
+        hash[city] = []
+        hash[city] << school
+      end
+    end
+  end
+  hash
 end
