@@ -28,52 +28,44 @@ def remove_non_strings(array)
 end
 
 
-def count_elements(elements)
-  new_array = []
-  newest_array = []
-  another_array = []
-  hash = {}
-  elements.each do |words|
-    another_array.push(words.values)
-  end
-  another_array.each do |word|
-    if new_array.include?(word)
-      hash[word][:count] += 1
-    else
-      hash[word] = {name:word[0], count:1}
-      new_array.push(word)
-    end
-  end
-  hash.each do |person, attributes|
-    newest_array.push(attributes)
-  end
-  newest_array
-end
-
 # elements = [{name:"Jay"},{name:"Bam"},{name:"Jay"},{name:"Bam"},{name:"Jay"},{name:"Bam"},{name:"Amber"}]
 # elements = ["Jay","Bam","Jay","Bam","Jay","Bam","Amber"]
 # puts count_elements(elements)
 
-def merge_data(keys, data)
-  count = 0
-  array = []
+def count_elements(elements)
   name_array = []
-  data.each do |person|
-    person.each do |name, attributes|
-      name_array.push(name)
+  name_hash = {}
+  final_array = []
+
+  elements.each {|element| name_array.push(element[:name])}
+
+  name_array.each do |name|
+    if name_hash.has_key?(name)
+      name_hash[name][:count] += 1
+    else
+      name_hash[name] ||= {}
+      name_hash[name][:name] = name
+      name_hash[name][:count] = 1
     end
   end
 
-  while count < keys.length
-    array.push(keys[count].merge(data[0][name_array[count]]))
-    count += 1
-  end
-  # person1 = keys[0].merge(data[0]["blake"])
-  # person2 = keys[1].merge(data[0]["ashley"])
-  # array = [person1,person2]
-  array
+  name_hash.each {|name, data| final_array.push(data)}
+  final_array
 end
 
+def merge_data(keys, data)
+  new_data = []
+  data.each do |info|
+    info.each do |name, attributes|
+      keys.each do |kys|
+        if kys.has_value?(name)
+          new_data.push(attributes.merge(kys))
+        end
+      end
+    end
+  end
+  new_data
+end
 
 keys =  [
   {:first_name => "blake"},
@@ -99,21 +91,17 @@ data = [{
             }
           }
 ]
-# puts merge_data(keys, data)
-# puts keys[0].merge(data[0]["blake"])
+# merge_data(keys,data)
 
 def find_cool(cool)
-  array = []
-  cool.each do |item|
-    item.each do |key,value|
-      if value == "cool"
-        array.push(item)
-      end
+  cool_array = []
+  cool.each do |person|
+    if person[:temperature] == "cool"
+      cool_array.push(person)
     end
   end
-  array
+  cool_array
 end
-
 cool = [
     {
       :name => "ashley",
@@ -128,22 +116,15 @@ cool = [
 
 def organize_schools(schools)
   organized_hash = {}
-  school_array = []
-  schools.each do |school, value|
-    value.each do |key, location|
-      if organized_hash.has_key?(location)
-        organized_hash[location] += ", "+school
-      else
-        organized_hash[location] = school
-      end
+
+  schools.each do |name, location|
+    location.each do |loc,loc_name|
+      organized_hash[loc_name] ||= []
+      organized_hash[loc_name].push(name)
     end
-  end
-  organized_hash.each do |key, value|
-    organized_hash[key] = value.split(", ")
   end
   organized_hash
 end
-
 
 schools = {
   "flatiron school bk" => {
@@ -165,4 +146,4 @@ schools = {
     :location => "SF"
   }
 }
-puts organize_schools(schools)
+organize_schools(schools)
