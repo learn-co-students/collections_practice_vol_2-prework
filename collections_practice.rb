@@ -5,9 +5,9 @@ def begins_with_r(tools)
       boolean_variable = true
     else
       boolean_variable = false
-      return boolean_variable
     end
   end
+  return boolean_variable
 end
 
 def contain_a(array)
