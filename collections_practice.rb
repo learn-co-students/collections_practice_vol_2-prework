@@ -1,3 +1,5 @@
+require 'pry'
+
 def begins_with_r(tools)
   boolean_variable = nil
   tools.each do | tool |
@@ -30,15 +32,31 @@ def remove_non_strings(array)
 end
 
 def count_elements(array)
-  array.each_with_object({}) {|object,hash| hash[object] +=1 }
+  counthash = Hash.new(0)
+  array.each {|v| counthash[v] += 1}
+  counthash.collect do |key,value|
+    key.merge({count:value})
+  end
 end
 
 def merge_data(keys,data)
-  keys + data
+  merge_array = []
+  keys.each do |e|
+    data.each do |element|
+      element.each do |k,v|
+        if e[:first_name] == k
+          merge_array << e.merge(v)
+        end
+      end
+    end
+  end
+  merge_array
 end
 
 def find_cool(cool)
-  cool.select{|name,temp| temp[:temperature] == "cool"}
+  cool.each do |name,temp|
+    temp.select {|symb,string| string == "cool"}
+  end
 end
 
 def organize_schools(schools)
