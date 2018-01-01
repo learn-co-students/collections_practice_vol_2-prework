@@ -75,7 +75,7 @@ def organize_schools(schools)
     schools.each do |s,pl|
       if city == pl[:location]
         city_schools << s
-        organized_schools_hash = {city=>city_schools}
+        organized_schools_hash = organized_schools_hash.merge({city=>city_schools})
       end
     end
   end
