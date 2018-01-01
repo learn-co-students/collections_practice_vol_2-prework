@@ -69,15 +69,15 @@ def organize_schools(schools)
     location_array << place[:location]
   end
   locations = location_array.uniq
-  organized_schools_hash = Hash.new(0)
+  organized_schools = Hash.new(0)
   locations.each do |city|
     city_schools = []
     schools.each do |s,pl|
       if city == pl[:location]
         city_schools << s
-        organized_schools_hash = organized_schools_hash.merge({city=>city_schools})
+        organized_schools = organized_schools.merge({city=>city_schools})
       end
     end
   end
-  organized_schools_hash
+  organized_schools
 end
