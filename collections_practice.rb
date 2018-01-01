@@ -54,11 +54,16 @@ def merge_data(keys,data)
 end
 
 def find_cool(cool)
-  cool.each do |name,temp|
-    temp.select {|symb,string| string == "cool"}
+  cool_array = []
+  cool.each do |e|
+    if e[:temperature] == "cool"
+      cool_array << e
+    end
   end
+  cool_array
 end
 
 def organize_schools(schools)
-  schools
+  location_array = []
+  
 end
