@@ -65,5 +65,19 @@ end
 
 def organize_schools(schools)
   location_array = []
-  
+  schools.each do |school,place|
+    location_array << place[:location]
+  end
+  locations = location_array.uniq
+  organized_schools_hash = Hash.new(0)
+  locations.each do |city|
+    city_schools = []
+    schools.each do |s,pl|
+      if city == pl[:location]
+        city_schools << s
+        organized_schools_hash = {city=>city_schools}
+      end
+    end
+  end
+  organized_schools_hash
 end
