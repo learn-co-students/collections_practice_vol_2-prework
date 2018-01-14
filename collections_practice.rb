@@ -8,7 +8,9 @@ def contain_a(array)
 end
 
 def first_wa(array)
-  array.find {|x| x.start_with?("wa")}
+  array.find {|x|
+    x.class == String && x.start_with?('wa')
+  }
 end
 
 def remove_non_strings(array)
@@ -16,16 +18,23 @@ def remove_non_strings(array)
 end
 
 def count_elements(array)
-  array.uniq.map {|x| array.count(x)}
+  unique = array.uniq
+  unique.each_with_index {|x,i|
+    unique[i][:count] = array.count(x)
+  }
 end
 
-def merge_data()
+def merge_data(key, data)
+  key.each{|v|
+    data[0][v.values[0]][v.keys[0]]=v.values[0]
+  }
+  data
 end
 
   #
   #     it 'combines two nested data structures into one' do
   #       expect(merge_data(keys, data)).to eq(merged_data)
-  #     end
+  #     endz
   def find_cool
   end
 
@@ -36,62 +45,27 @@ end
   #
   #   end
   #
-  def organize_schools
+  def organize_schools(data)
+    collect_locations = []
+    data.values.each {|i|
+      collect_locations << i[:location]
+    }
+    collect_locations.uniq!
+    new_hash = {}
+    collect_locations.each{|loc|
+      array = []
+      data.each {|k,v|
+        if v[:location]== loc
+          array << k
+        end
+      }
+      new_hash[loc]=array
+    }
+    new_hash
   end
-  #
-  #     # Question 8
-  #
-  #     it 'organizes the schools by location' do
-  #       expect(organize_schools(schools)).to eq(organized_schools)
-  #     end
-  #
-  #   end
-  #
-  # end
 
 
-#   describe '#begins_with_r' do
 
-#     it 'Return true if every element of the tools array starts with an "r" and false otherwise.' do
-#       expect(begins_with_r(["ruby", "rspec", "rails"])).to eq(true)
-#     end
-#
-#     it "should return false if there's an element that does not begin with r" do
-#       expect(begins_with_r(["ruby", "rspec", "sails"])).to eq(false)
-#     end
-
-#
-#   describe '#first_wa' do
-#
-#     # Question 3
-#
-#     it "Return the first element that begins with the letters 'wa'" do
-#       expect(first_wa(["candy", :pepper, "wall", :ball, "wacky"])).to eq("wall")
-#     end
-#
-#   end
-#
-#   describe '#remove_non_strings' do
-#
-#     # Hint: Use the method "class"  "blake".class
-#
-#     # Question 4
-#
-#     it "remove anything that's not a string from an array" do
-#       expect(remove_non_strings(["blake", 1, :hello])).to eq(["blake"])
-#     end
-#
-#   end
-#
-#   describe '#count_elements' do
-#
-#     # Question 5
-#
-#     it 'count how many times something appears in an array' do
-#       expect(count_elements([{:name => "blake"}, {:name => "blake"}, {:name => "ashley"}])).to eq([{:name => "blake", :count => 2}, {:name => "ashley", :count => 1}])
-#     end
-#
-#   end
 #
 #   describe '#merge_data' do
 #
@@ -113,14 +87,3 @@ end
 #
 #   end
 #
-#   describe '#organize_schools' do
-#
-#     # Question 8
-#
-#     it 'organizes the schools by location' do
-#       expect(organize_schools(schools)).to eq(organized_schools)
-#     end
-#
-#   end
-#
-# end
