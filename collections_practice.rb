@@ -24,9 +24,9 @@ def count_elements(array)
   }
 end
 
-def merge_data(key, data)
-  key.each{|v|
-    data[0][v.values[0]][v.keys[0]]=v.values[0]
+def merge_data(keys_a, data_a)
+  keys_a.each_with_index{|key, i|
+    data[i][key.keys[0]]=key.values[0]
   }
   data
 end
@@ -35,16 +35,20 @@ end
   #     it 'combines two nested data structures into one' do
   #       expect(merge_data(keys, data)).to eq(merged_data)
   #     endz
-  def find_cool
+
+  def find_cool(array)
+    output = []
+    array.each{|h|
+      h.each { |k,v|
+        if v==cool
+          output << h
+        end
+      }
+    }
+    output
   end
 
-  #
-  #     it 'find all cool hashes' do
-  #       expect(find_cool(cool)).to eq([{:name => "blake",:temperature => "cool"}])
-  #     end
-  #
-  #   end
-  #
+
   def organize_schools(data)
     collect_locations = []
     data.values.each {|i|
@@ -63,27 +67,3 @@ end
     }
     new_hash
   end
-
-
-
-#
-#   describe '#merge_data' do
-#
-#     # Question 6
-#
-#     it 'combines two nested data structures into one' do
-#       expect(merge_data(keys, data)).to eq(merged_data)
-#     end
-#
-#   end
-#
-#   describe '#find_cool' do
-#
-#     # Question 7
-#
-#     it 'find all cool hashes' do
-#       expect(find_cool(cool)).to eq([{:name => "blake",:temperature => "cool"}])
-#     end
-#
-#   end
-#
