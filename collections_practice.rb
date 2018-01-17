@@ -1,3 +1,5 @@
+require "pry"
+
 def begins_with_r(array)
   test = array.select {|x| x.start_with?("r")}
   test.count == array.count ? true : false
@@ -25,45 +27,48 @@ def count_elements(array)
 end
 
 def merge_data(keys_a, data_a)
-  keys_a.each_with_index{|key, i|
-    data[i][key.keys[0]]=key.values[0]
+  array = []
+  keys_a.each{|key_h|
+    data_a[0].each{|name, data_h|
+      # 
+      # binding.pry
+      if name == key_h[:first_name]
+        data_h[:first_name] = key_h[:first_name]
+        array << data_h
+      end
+    }
   }
-  data
+  array
 end
 
-  #
-  #     it 'combines two nested data structures into one' do
-  #       expect(merge_data(keys, data)).to eq(merged_data)
-  #     endz
-
-  def find_cool(array)
-    output = []
-    array.each{|h|
-      h.each { |k,v|
-        if v==cool
-          output << h
-        end
-      }
+def find_cool(array)
+  output = []
+  array.each{|h|
+    h.each { |k,v|
+      if v=="cool"
+        output << h
+      end
     }
-    output
-  end
+  }
+  output
+end
 
 
-  def organize_schools(data)
-    collect_locations = []
-    data.values.each {|i|
-      collect_locations << i[:location]
+def organize_schools(data)
+  collect_locations = []
+  data.values.each {|i|
+    collect_locations << i[:location]
+  }
+  collect_locations.uniq!
+  new_hash = {}
+  collect_locations.each{|loc|
+    array = []
+    data.each {|k,v|
+      if v[:location]== loc
+        array << k
+      end
     }
-    collect_locations.uniq!
-    new_hash = {}
-    collect_locations.each{|loc|
-      array = []
-      data.each {|k,v|
-        if v[:location]== loc
-          array << k
-        end
-      }
-      new_hash[loc]=array
-    }
-    new_hash
-  end
+    new_hash[loc]=array
+  }
+  new_hash
+end
