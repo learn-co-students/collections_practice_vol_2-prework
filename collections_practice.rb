@@ -1,10 +1,6 @@
 def begins_with_r(array)
   var = true
-  array.each do |x|
-    if !(x.start_with?("r"))
-      var = false
-    end
-  end
+  array.each do |x| var = false if !(x.start_with?("r")) end
   var
 end
 
@@ -23,16 +19,28 @@ def remove_non_strings(array)
 end
 
 def count_elements(array)
-  count = Hash.new(0)
-  array.each do |x| count[x] += 1 end
-  count
+  new = []
+  array.each do |x| new << x[:name] end
+  array.each do |x| x[:count] = new.count(x[:name]) end.uniq
 end
 
-def merge_data
+def merge_data(key, value)
+  new = []
+  key.each_with_index do |x, index| new << x.merge(value[0][x[:first_name]]) end
+  new
 end
 
-def find_cool
+def find_cool(array)
+  new = []
+  array.each do |x| new << x if x[:temperature] == "cool" end
+  new
 end
 
 def organize_schools(array)
+  schools = {}
+  array.each do |name, location|
+      schools[location[:location]] << name if schools[location[:location]]
+      schools[location[:location]] = [] << name if !(schools[location[:location]])
+  end
+schools
 end
