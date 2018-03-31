@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'pry'
 
 describe 'collections practice vol 2.' do
 
@@ -137,7 +138,7 @@ describe 'collections practice vol 2.' do
     # Question 5
 
     it 'count how many times something appears in an array' do
-      expect(count_elements([{:name => "blake"}, {:name => "blake"}, {:name => "ashley"}])).to eq([{:name => "blake", :count => 2}, {:name => "ashley", :count => 1}])
+        expect(count_elements([{:name => "blake"}, {:name => "blake"}, {:name => "ashley"}])).to eq([{:name => "blake", :count => 2}, {:name => "ashley", :count => 1}])
     end
 
   end
