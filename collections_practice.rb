@@ -25,3 +25,13 @@ require 'pry'
    end
    new_arr[0]
  end
+
+ def remove_non_strings(array)
+   array.select do |element|
+     element.class == String
+   end
+ end
+
+ def count_elements(array)
+   i = 0
+ end
