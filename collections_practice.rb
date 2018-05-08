@@ -31,6 +31,10 @@ def count_elements(array)
   count_array
 end
 
+=begin
+[{:name => "blake"}, {:name => "blake"}, {:name => "ashley"}])
+=end
+
 def merge_data(keys, data)
   keys.collect {|hash| hash.merge(data.reduce[hash[:first_name]])}
 end
