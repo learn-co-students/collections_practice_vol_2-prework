@@ -66,11 +66,7 @@ def organize_schools(schools)
   new_array = Hash.new
     schools.each do |name_school, complete_location|
       complete_location.each do |location, city_name|
-        if new_array[city_name] == nil
-          new_array[city_name] = [name_school]
-          else
-            new_array[city_name] << name_school
-          end
+        new_array[city_name] == nil ? new_array[city_name] = [name_school] : new_array[city_name] << name_school  
       end
     end
 new_array
