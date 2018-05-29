@@ -42,16 +42,55 @@ end
 
 def count_elements(array)
   return_array = []
-  name_array = []
-  count = 0
-
+  count = 1
   array.each do |element|
-    return_array.push(element.merge!(:"count" => count))
     element.each do |k, name|
-      if name_array.any?(name) == false
-      count += 1
-      return_array.push(element.merge!(:"count" => count))
+      if return_array.include?({k => name, :count => count}) == false
+        return_array.push({k => name, :count => count})
+      else
+        return_array.delete_if{ |element| element == {k => name, :count => count}}
+        return_array.push({k => name, :count => count+1})
+      end
     end
   end
   return_array
+end
+
+def merge_data(keys, data)
+  new_array = []
+  data.each do |element|
+    element.each do |k, v|
+      new_array.push(data[0][k])
+    end
+  end
+  count = 0
+  while count < new_array.length
+    keys[count].merge!(new_array[count])
+    count += 1
+  end
+  keys
+end
+
+def find_cool(array)
+  new_array = []
+  array.each do |element|
+    if element[:temperature] == "cool"
+      new_array.push(element)
+    end
+  end
+  new_array
+end
+
+def organize_schools(hash)
+  new_hash = {}
+  hash.each do |school, v|
+    v.each do |title, location|
+      if new_hash[location] == nil
+        new_hash[location] = [school]
+      else
+        new_hash[location].push(school)
+      end
+    end
+  end
+  new_hash
 end
