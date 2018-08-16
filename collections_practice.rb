@@ -39,12 +39,31 @@ end
 
 def count_elements (array)
   counts = []
-  
   array.uniq.each do |element, value|
     counts.push(:name => element[:name],:count => array.count(element))
-    
   end 
- 
-  
   counts
 end 
+
+def merge_data(keys, values)
+  container = []
+  keys.each do |person_name|
+    name = person_name[:first_name]
+    values.each do |person_data|
+      if person_data[name]
+        merged_person = person_data[name]
+        merged_person[:first_name] = name
+        container << merged_person
+      end
+    end
+  end
+  container
+end
+
+def find_cool(array)
+  container = []
+  array.each do |element|
+    container << element if element[:temperature] == "cool" 
+  end
+  container
+end
