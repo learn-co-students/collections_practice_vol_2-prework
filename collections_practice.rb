@@ -67,3 +67,23 @@ def find_cool(array)
   end
   container
 end
+
+ def organize_schools(object)
+   countainer = {}
+   array = []
+   object.each do |school_name, value|
+     value.each do |key, location|
+     array.push(location)
+    end 
+ end 
+ array.uniq.each do |city|
+   countainer[city] =[]
+ end 
+  object.each do |school_name, school|
+    # array.push(school[:location])
+
+    countainer[school[:location]].push(school_name)
+ end 
+# array
+countainer
+ end 
