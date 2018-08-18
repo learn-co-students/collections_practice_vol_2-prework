@@ -1,7 +1,15 @@
 require "pry"
 
-def begins_with_r
-  
+def begins_with_r(array)
+  true_or_false = nil 
+  array.each do |element|
+    if element.start_with?("r") 
+      true_or_false = true 
+    else
+      true_or_false = false  
+    end 
+  end
+  true_or_false
 end 
 
 
