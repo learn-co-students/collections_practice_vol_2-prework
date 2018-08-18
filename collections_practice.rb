@@ -24,7 +24,9 @@ def contain_a(array)
 end
 
 
-def first_wa
+def first_wa(array)
+  array.find(start_with?("wa"))
+    
   
 end 
 
