@@ -15,7 +15,7 @@ def first_wa
 end 
 
 
-def remove non_strings
+def remove_non_strings
   
 end 
 
