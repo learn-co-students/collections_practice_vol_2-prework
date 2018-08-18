@@ -25,13 +25,16 @@ end
 
 
 def first_wa(array)
-  array.find(start_with?("wa"))
+  array.find do |element| 
+    element.class == String && element.start_with?("wa")
     
+  end 
   
 end 
 
 
 def remove_non_strings
+  
   
 end 
 
