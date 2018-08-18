@@ -13,8 +13,14 @@ def begins_with_r(array)
 end 
 
 
-def contain_a
-  
+def contain_a(array)
+  array_of_words_that_contain_a = []
+  array.each do |element|
+    if element.include?("a")
+      array_of_words_that_contain_a << element 
+    end
+  end 
+  array_of_words_that_contain_a
 end
 
 
