@@ -27,9 +27,7 @@ end
 def first_wa(array)
   array.find do |element| 
     element.class == String && element.start_with?("wa")
-    
   end 
-  
 end 
 
 
