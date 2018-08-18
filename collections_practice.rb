@@ -38,9 +38,29 @@ def remove_non_strings(array)
 end 
 
 
-def count_elements
-  
+def count_elements(array)
+#  final_array = nil 
+#  array.each do |element|
+  new_array = nil 
+  new_array = array.uniq
+    new_array.each do |element|
+      element[:count] = array.count(element)
+    end 
+  new_array
 end
+  
+  
+# When fed an array, each element of which is a hash:
+# Count and store the number of times each hash appears in the array.
+# Eliminate any duplicate hashes in the array.
+# Add a new key/value pair to each hash, i.e., :count => number  .
+
+
+
+
+# it 'count how many times something appears in an array' do
+#      expect(count_elements([{:name => "blake"}, {:name => "blake"}, {:name => "ashley"}])).to eq([{:name => "blake", :count => 2}, {:name => "ashley", :count => 1}])
+#  end
 
 
 def merge_data
