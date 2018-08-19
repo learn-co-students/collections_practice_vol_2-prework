@@ -77,6 +77,17 @@ end
 # expect [{:name => "blake",:temperature => "cool"}]
 
 
-def organize_schools
-
+def organize_schools(schools)
+  final_hash = {}
+  schools.each do |school_key_string, location_hash|
+    location_hash.each do |location_symbol, city|
+      if final_hash[city] = [ ]
+      final_hash[city] = [school_key_string]
+ #     {city => [school_key_string]}
+    end 
+  end
+  final_hash
 end  
+# it 'organizes the schools by location' do
+#      expect(organize_schools(schools)).to eq(organized_schools)
+# end 
