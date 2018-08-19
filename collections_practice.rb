@@ -49,7 +49,6 @@ end
 
 
 def merge_data(keys, data)
- #binding.pry 
  final_array = []
   hash_a = nil
   keys.each do |keys_hash|
@@ -65,7 +64,6 @@ def merge_data(keys, data)
   final_array
 end 
       
-# expected: [{:first_name=>"blake", :awesomeness=>10, :height=>"74", :last_name=>"johnson"}, {:first_name=>"ashley", :awesomeness=>9, :height=>60, :last_name=>"dubs"}]    
      
     
   
