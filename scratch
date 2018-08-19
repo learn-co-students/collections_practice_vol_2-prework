@@ -48,16 +48,44 @@ def count_elements(array)
 end
 
 
-def merge_data
+def merge_data(keys, data)
+ final_array = []
+  hash_a = nil
+  keys.each do |keys_hash|
+    hash_a = keys_hash
+    data.each do |data_hash|
+      data_hash.each do |data_sub_key, data_sub_hash|
+        if data_sub_key == keys_hash.values.join
+            final_array << hash_a.merge(data_sub_hash)
+        end
+      end
+    end
+  end 
+  final_array
+end 
   
-end 
-
-
-def find_cool
   
+def find_cool(cool)
+  final_array = []
+ cool.each do |hash|
+   if hash.values.include?("cool")
+     final_array << hash
+   end 
+ end 
+ final_array
 end 
+# expect [{:name => "blake",:temperature => "cool"}]
 
 
-def organize_schools
-
-end 
+def organize_schools(schools)
+  final_hash = {}
+  schools.each do |school_key_string, location_hash|
+    location_hash.each do |location_symbol, city|
+      if final_hash[city] == nil  
+      final_hash[city]  = [school_key_string]
+      else final_hash[city] << school_key_string
+      end
+    end 
+  end
+  final_hash
+end

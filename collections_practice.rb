@@ -1,5 +1,3 @@
-require "pry"
-
 def begins_with_r(array)
   true_or_false = nil 
   array.each do |element|
@@ -78,19 +76,14 @@ end
 
 
 def organize_schools(schools)
-#  binding.pry
   final_hash = {}
   schools.each do |school_key_string, location_hash|
     location_hash.each do |location_symbol, city|
       if final_hash[city] == nil  
       final_hash[city]  = [school_key_string]
- #     {city => [school_key_string]}
-   else final_hash[city] << school_key_string
- end
+      else final_hash[city] << school_key_string
+      end
     end 
   end
   final_hash
-end  
-# it 'organizes the schools by location' do
-#      expect(organize_schools(schools)).to eq(organized_schools)
-# end 
+end
