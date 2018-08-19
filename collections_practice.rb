@@ -72,7 +72,6 @@ def find_cool(cool)
  end 
  final_array
 end 
-# expect [{:name => "blake",:temperature => "cool"}]
 
 
 def organize_schools(schools)
