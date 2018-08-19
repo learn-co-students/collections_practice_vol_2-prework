@@ -63,26 +63,18 @@ def merge_data(keys, data)
   end 
   final_array
 end 
-      
-     
-def find_cool 
   
+  
+def find_cool(cool)
+  final_array = []
+ cool.each do |hash|
+   if hash.values.include?("cool")
+     final_array << hash
+   end 
+ end 
+ final_array
 end 
-  
-  
-    
-     
-  
-# c = a.merge(b)
-# hash[:new_key] = hash.delete :old_key
-  
-  
-  
-
-
-def find_cool
-  
-end 
+# expect [{:name => "blake",:temperature => "cool"}]
 
 
 def organize_schools
