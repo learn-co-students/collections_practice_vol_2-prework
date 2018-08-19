@@ -49,25 +49,23 @@ end
 
 
 def merge_data(keys, data)
-  
-  hash = nil 
-  
-  final_collection = keys.collect do |keys_hash|
-    data.collect do |data_hash|
-      data_hash.collect do |data_hash|
-        data_hash.each do |data_sub_key, data_sub_hash|
-          
-          if keys_hash[:first_name] == data_sub_hash.index
-            keys_hash.merge(data_sub_hash)
-          end
+ #binding.pry 
+ final_array = []
+  hash_a = nil
+  keys.each do |keys_hash|
+    hash_a = keys_hash
+    data.each do |data_hash|
+      data_hash.each do |data_sub_key, data_sub_hash|
+        if data_sub_key == keys_hash.values.join
+            final_array << hash_a.merge(data_sub_hash)
         end
       end
     end
   end 
-  final_collection
+  final_array
 end 
       
-    
+# expected: [{:first_name=>"blake", :awesomeness=>10, :height=>"74", :last_name=>"johnson"}, {:first_name=>"ashley", :awesomeness=>9, :height=>60, :last_name=>"dubs"}]    
      
     
   
