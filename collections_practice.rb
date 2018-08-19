@@ -78,12 +78,15 @@ end
 
 
 def organize_schools(schools)
+#  binding.pry
   final_hash = {}
   schools.each do |school_key_string, location_hash|
     location_hash.each do |location_symbol, city|
-      if final_hash[city] = [ ]
-      final_hash[city] = [school_key_string]
+      if final_hash[city] == nil  
+      final_hash[city]  = [school_key_string]
  #     {city => [school_key_string]}
+   else final_hash[city] << school_key_string
+ end
     end 
   end
   final_hash
