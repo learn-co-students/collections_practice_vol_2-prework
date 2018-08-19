@@ -48,9 +48,38 @@ def count_elements(array)
 end
 
 
-def merge_data
+def merge_data(keys, data)
   
+  hash = nil 
+  
+  final_collection = keys.collect do |keys_hash|
+    data.collect do |data_hash|
+      data_hash.collect do |data_hash|
+        data_hash.each do |data_sub_key, data_sub_hash|
+          
+          if keys_hash[:first_name] == data_sub_hash.index
+            keys_hash.merge(data_sub_hash)
+          end
+        end
+      end
+    end
+  end 
+  final_collection
 end 
+      
+    
+     
+    
+  
+  
+    
+     
+  
+# c = a.merge(b)
+# hash[:new_key] = hash.delete :old_key
+  
+  
+  
 
 
 def find_cool
