@@ -121,7 +121,7 @@ describe 'collections practice vol 2.' do
   end
 
   describe '#remove_non_strings' do
-    
+
     # Hint: Use the method "class"  "blake".class
 
     # Question 4
@@ -162,6 +162,7 @@ describe 'collections practice vol 2.' do
 
   end
 
+  #doesnt organize schools just inverts and combines the hash of hash
   describe '#organize_schools' do
 
     # Question 8
