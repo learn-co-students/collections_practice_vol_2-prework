@@ -17,5 +17,5 @@ def contain_a(cheat)
 #binding.pry
     end
   end
-  a
+  a.compact
 end
