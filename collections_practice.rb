@@ -10,12 +10,15 @@ test
 end
 
 def contain_a(cheat)
- a = cheat.collect do |contain_a|
-     if contain_a.include?("a")
-       contain_a
- 
-#binding.pry
+  a = cheat.collect do |contain_a|
+    if contain_a.include?("a")
+      contain_a
     end
   end
   a.compact
+end
+
+def first_wa(good)
+
+#binding.pry
 end
