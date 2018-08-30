@@ -13,8 +13,9 @@ def contain_a(cheat)
 a = 
   cheat.each do |contain_a|
     if contain_a.include("a")
-  
+  << a
 #binding.pry
     end
   end
+  a
 end
