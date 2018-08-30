@@ -1,9 +1,13 @@
 require 'pry'
 def begins_with_r(tools)
   tools.each do |first_letter|
-   binding.pry
+   #binding.pry
+   test = "true"
     if first_letter[0] == "r"
+    end
       return true
-    end #binding.pry
+    else
+      return false
+    #end #binding.pry
   end
 end
