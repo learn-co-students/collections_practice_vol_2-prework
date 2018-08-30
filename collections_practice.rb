@@ -19,6 +19,10 @@ def contain_a(cheat)
 end
 
 def first_wa(good)
-
-#binding.pry
+  wa = good.collect do |contain_wa|
+    if contain_wa.include?("wa")
+      contain_wa
+    end
+  end
+  wa.compact
 end
