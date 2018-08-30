@@ -10,10 +10,10 @@ test
 end
 
 def contain_a(cheat)
-a = 
-  cheat.each do |contain_a|
-    if contain_a.include("a")
-  << a
+ a = cheat.collect do |contain_a|
+     if contain_a.include?("a")
+       contain_a
+ 
 #binding.pry
     end
   end
