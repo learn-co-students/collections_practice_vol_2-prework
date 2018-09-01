@@ -18,11 +18,30 @@ def contain_a(cheat)
   a.compact
 end
 
+
 def first_wa(good)
-  wa = good.collect do |contain_wa|
-    if contain_wa.include?("wa")
-      contain_wa
+   good.each do |contain_wa|
+   #binding.pry
+    if contain_wa.match(/wa/)
+     return contain_wa
+  #binding.pry
     end
   end
-  wa.compact
+  
 end
+
+
+
+def remove_non_strings(array)
+  array.grep(String)
+end
+
+def count_elements(array)
+  count = 0
+  array.each |element|
+  count += 1
+#binding.pry
+  end
+  count
+end
+
