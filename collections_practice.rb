@@ -37,11 +37,11 @@ def remove_non_strings(array)
 end
 
 def count_elements(array)
-  count = 0
-  array.each |element|
-  count += 1
-#binding.pry
+  counter = 0
+  array.each do |element|
+  
+  element
+  counter += 1  
   end
-  count
+  counter
 end
-
