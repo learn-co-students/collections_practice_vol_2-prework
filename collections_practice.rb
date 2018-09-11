@@ -41,8 +41,8 @@ def count_elements(array) #help
   counter = []
   array.each do |name|
     name.each do |key, value|
-binding.pry
-      if counter.include?(:name == name)
+      if counter.include?(name)
+        binding.pry
         :count
       else
       counter << {:name => value, :count => 1}
