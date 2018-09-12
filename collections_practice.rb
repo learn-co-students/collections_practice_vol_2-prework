@@ -21,11 +21,25 @@ def remove_non_strings(arr)
   arr.delete_if{|element| !element.instance_of?(String)}
 end
 def count_elements(arr)
-  
+  counting_arr = []
+  arr.each do |element|
+    if counting_arr.size == 0 
+      counting_arr[0] = {:count => 1, :name => element[:name]}
+    else
+      counting_arr.each do |counting_element|
+        if element[:name] == counting_element[:name]
+          counting_element[:count] = counting_element[:count].to_i + 1
+        else
+          counting_arr << {:count => 0, :name => element[:name]}
+        end
+      end
+    end
+  end
+  counting_arr
 end
 
 def merge_data(keys,data)
-
+  key
 end
 
 def find_cool(hashes)
