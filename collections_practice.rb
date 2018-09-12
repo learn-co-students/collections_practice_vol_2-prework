@@ -28,7 +28,7 @@ def first_wa(array)
   end
 end
 
-def remove_non_strings(array) #help
+def remove_non_strings(array)
   removed = array.map do |word|
     if word.is_a?(String)
       word
@@ -37,26 +37,54 @@ def remove_non_strings(array) #help
   removed.compact
 end
 
-def count_elements(array) #help
+def count_elements(array)
   counter = []
-  array.each do |name|
-    name.each do |key, value|
-      if counter.include?(name)
-        binding.pry
-        :count
-      else
-      counter << {:name => value, :count => 1}
-      end
+  array.each do |person|
+    if !addCount(counter, person[:name])
+      counter << { name: person[:name], count: 1 }
     end
   end
   counter
 end
 
-def merge_data(keys, data) #help
-  keys.map do |first_name|
-    data.map do |info|
-      info.map do |person_info|
-      end
+def addCount(array, name)
+  array.each do |record|
+    if record[:name] == name
+      record[:count] += 1
+      return true
     end
   end
+  false
+end
+
+def merge_data(keys, data)
+  data_merge = []
+  keys.each do |name|
+    data.each do |stats|
+     data_merge << name.merge(stats[name[:first_name]])
+    end
+  end
+  data_merge
+end
+
+def find_cool(array)
+  ice_cold = []
+  array.each do |person|
+    if person.value?("cool")
+      ice_cold << person
+    end
+  end
+  ice_cold
+end
+
+def organize_schools(schools)
+  cities = {}
+  schools.each do |name, location|
+    if cities.has_key?(location[:location])
+      cities[location[:location]] << name
+    else
+      cities[location[:location]] = [name]
+    end
+  end
+  cities
 end
