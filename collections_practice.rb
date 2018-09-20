@@ -1,5 +1,4 @@
-# your code goes here
-
+# begins_with_r
 def begins_with_r(array)
   counter = 0 
   array.each do |string|
@@ -10,13 +9,16 @@ def begins_with_r(array)
   return counter == array.length
 end
 
+
+# contain_a
 def contain_a (array)
   array.select do |string|
     string.downcase.include? "a"
-    
   end
 end
 
+
+# first_wa
 def first_wa (array)
   array.each do |string|
     # puts string[0...2]
@@ -27,12 +29,15 @@ def first_wa (array)
 end
 
 
+# remove_non_strings
 def remove_non_strings(array)
   array.select do |string|
     string.is_a?(String)
   end
 end
 
+
+# count_elements
 def count_elements(array)
   new_array = [] 
   array.each do |obj|
@@ -46,29 +51,51 @@ def count_elements(array)
   return new_array
 end
 
-require("pry")
 
+# merge_data
 def merge_data(keys, data)
-  new_data = []
-  data.each do |obj|
-    obj.each do |key, value|
-      keys.each do |person|
-        puts person.values
-        puts key.has_key?(person.values)
-        if obj.has_key?(person.values)
-          obj.values[person.keys] = person.values
-          new_data.push(obj)
+  container = []
+  
+  keys.each do |obj|
+    name = obj[:first_name]
+    data.each do |person|
+      
+      person.each do |key, value|
+        if key == name
+          value[:first_name]= name
+          container.push(value)
         end
       end
+      end
+  end
+  return container
+end
+
+
+# find_cool
+def find_cool(cool)
+  cool.select do |obj|
+    obj[:temperature] == 'cool'
+  end
+end
+
+
+# organize_schools
+def organize_schools(schools)
+  new_obj = {}
+
+  schools.each do |school, location|
+    if new_obj.keys.include?(location.values.join)
+      new_obj[location.values.join].push(school)
+    else
+      schools_array = [school]
+      new_obj[location.values.join] = schools_array
     end
   end
-  puts new_data
+  return new_obj
 end
-    
-  
-          
-puts merge_data([{:first_name=>"blake"}, {:first_name=>"ashley"}], [{"blake"=>{:awesomeness=>10, :height=>"74", :last_name=>"johnson"},
-  "ashley"=>{:awesomeness=>9, :height=>60, :last_name=>"dubs"}}])
+
+
 
 
 
