@@ -58,5 +58,5 @@ def organize_schools(schools)
       end
     end
   end
-  schools_array
+  schools_arra
 end
