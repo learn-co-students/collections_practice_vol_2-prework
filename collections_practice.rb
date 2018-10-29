@@ -57,3 +57,46 @@ new_array = []
 
  new_array
 end
+
+def merge_data(keys, data)
+new_array = []
+
+   data[0].map do |key, values|
+
+    puts "key: #{key}"
+    puts "value: #{values}"
+
+       values[:first_name] = key
+       new_array << values
+   end
+  new_array
+end
+
+def find_cool(cool)
+
+cool_ary = []
+
+cool.each do |key, values|
+
+  if key.has_value?("cool")
+    cool_ary << key
+  end
+  end
+cool_ary
+end
+
+def organize_schools(schools)
+  location = Hash.new
+    schools.each do |school, school_data|
+
+      school_data.each do |location_key, location_data|
+
+        if location[location_data] == nil
+        location[location_data] = [school]
+        else
+          location[location_data] << school
+      end
+    end
+    end
+location
+end
