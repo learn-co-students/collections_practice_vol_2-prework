@@ -23,11 +23,20 @@ def contain_a(array)
     for j in 0...array.length
 #    binding.pry
       if array[i][j] == "a"
-        binding.pry
+#        binding.pry
          new_array << array[i] 
       end
     end 
   end
   return new_array
+end
+
+def first_wa(array)
+  for i in 0...array.length
+#  binding.pry
+    if array[i][0] == "w" && array[i][1] == "a"
+       return array[i]
+    end
+  end
 end
 
