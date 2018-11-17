@@ -54,20 +54,43 @@ def remove_non_strings(array)
   return array
 end
 
-def
 
+def count_elements(array)
+# array.uniq.map do |i|
+#    binding.pry
+#    [i,array.count(i)].to_h
+#  end
+  
+  array.uniq.map do |i|
+#    binding.pry
+    {:name => i.values[0], :count => array.count(i)}
+  end
+  
+#  names = Hash.new(0)
+#  final_output = []
+#  array.each do |i|
+#    names[i.keys]+=1
+#  end
+#  names.each do |names, counts|
+#    final_output << {:name => names,  :count => counts,}
+#  end
+#  return final_output[names]
+end
 
+def merge_data(keys, data)
+  first = keys[0].merge(data[0]["blake"])
+  second = keys[1].merge(data[0]["ashley"])
+#  binding.pry
+  output = [first,second]
+end
 
+def find_cool(cool)
+       
+end
 
+def organize_schools(schools)
 
-
-
-
-
-
-
-
-
+end
 
 
 
