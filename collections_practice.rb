@@ -120,8 +120,3 @@ def organize_schools(schools)
   end
   return new_hash
 end
-
-
-
-
-
