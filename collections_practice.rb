@@ -100,7 +100,14 @@ def find_cool(cool)
 end
 
 def organize_schools(schools)
-
+  array = []
+  new_hash = {}
+  schools.each do |name, values|
+    values.each do |k, v|
+      array << {name => v}
+    end
+  end
+  array
 end
 
 
