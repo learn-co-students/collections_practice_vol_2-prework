@@ -104,6 +104,7 @@ def organize_schools(schools)
   new_hash = {}
   schools.each do |name, values|
     values.each do |k, v|
+      binding.pry
       array << {name => v}
     end
   end
