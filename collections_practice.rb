@@ -110,10 +110,15 @@ def organize_schools(schools)
   end
   for i in 0...array.length
     array[i].each do |ks, vs|
-      binding.pry
-      new_hash[vs] = [ks]
+#      binding.pry
+      if new_hash[vs] == nil
+        new_hash[vs] = [ks]
+      else
+        new_hash[vs] += [ks]
+      end
     end
   end
+  return new_hash
 end
 
 
