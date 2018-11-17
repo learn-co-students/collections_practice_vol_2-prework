@@ -85,7 +85,18 @@ def merge_data(keys, data)
 end
 
 def find_cool(cool)
-       
+  answer = [] 
+  for i in 0...cool.length
+#  binding.pry
+    cool[i].each do |k,v|
+#      binding.pry
+      if v == "cool"
+#        binding.pry
+        answer << cool[i]
+      end
+    end
+  end
+  return answer
 end
 
 def organize_schools(schools)
