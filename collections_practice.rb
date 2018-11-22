@@ -28,38 +28,24 @@ def count_elements(arr)
   new_arr = []
 
   arr.each do |el|
-    # el.each do |key, val|
-    #   if !new_arr.empty?
-    #     new_arr.each do |new_el|
-    #       if new_el[key] == val
-    #         binding.pry
-    #         new_arr[new_arr.index(new_el)][:count] += 1
-    #       else
-    #         new_arr << el.merge({count:1})
-    #       end
-    #     end
-    #   else
-    #     new_arr << el.merge({count:1})
-    #   end
-    # end
-    new_arr << el
-    new_arr[-1][:count] = 1
+    new_arr << el.merge({count:0})
   end
 
-  i = 0
-  j = 1
-  while i < new_arr.size
-    while j < new_arr.size-1
-      if new_arr[i] == new_arr[j]
-        new_arr[i][:count] += 1
-        new_arr.delete_at(j)
+  # binding.pry
+  arr.each do |el|
+    el.each do |key, val|
+      new_arr.each do |new_el|
+        new_el.each do |new_key, new_val|
+          if key == new_key && val == new_val
+            new_arr[new_arr.index(new_el)][:count] += 1
+          end
+          # binding.pry
+        end
       end
-      j += 1
     end
-    i += 1
   end
 
-  new_arr
+  new_arr.uniq
 end
 
 def merge_data(data_one, data_two)
