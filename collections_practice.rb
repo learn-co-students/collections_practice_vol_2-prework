@@ -31,11 +31,13 @@ def count_elements(arr)
     new_arr << el.merge({count:0})
   end
 
-  # binding.pry
+  new_arr = new_arr.uniq
+  
   arr.each do |el|
     el.each do |key, val|
       new_arr.each do |new_el|
         new_el.each do |new_key, new_val|
+          # binding.pry
           if key == new_key && val == new_val
             new_arr[new_arr.index(new_el)][:count] += 1
           end
@@ -45,7 +47,7 @@ def count_elements(arr)
     end
   end
 
-  new_arr.uniq
+  new_arr
 end
 
 def merge_data(data_one, data_two)
