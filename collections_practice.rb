@@ -1,47 +1,83 @@
 # your code goes here
-def begins_with_r(tools)
-  tools.each do |item|
-    if item[0]== "r"
-      return true
-    else return false
+require 'pry'
+def begins_with_r(array)
+  status = true
+    array.each do |x|
+    # binding.pry
+    status = false if x[0]!= "r"
+    end
+status
 end
-
 
 def contain_a(array)
-  array.each do |element|
-    if element.include("a")
-      puts element
-    end
-
+a_array = []
+array.each do |x|
+if x.include?("a") == true
+a_array << x
+end
+end
+a_array
+end
 
 def first_wa(array)
-  array.each do |element|
-    if element[0]== "w" && element[1]=="a"
-      return element
+  array.each do |x|
+    if x[0]== "w" && x[1]=="a"
+      return x
       break
     end
-
+  end
+end
+#
 def remove_non_strings(array)
-  array.each do |element|
-    deleteif element.is_a?(string) == false
+  array.each do |x|
+  # binding.pry
+     array.delete_if {|x| x.is_a?(String) == false }
+end
 end
 
-def count_elements(array)
-  array.each do |element|
-    array.count(element)
+  def count_elements(array)
+    array.each do |hash|
+      hash[:count] = 0
+      name = hash[:name]
+      array.each do |newhash|
+        if newhash[:name] == name
+          hash[:count] += 1
+        end
+      end
+    end.uniq
   end
 
-def merge_data(v1,v2)
-  v1[0].values.map.with_index {|v, i| v2[i].merge(v)}
-end
-
+  def merge_data(arr1, arr2)
+    arr2[0].map do |name, prop_hash|
+      new_prop_hash = {}
+      arr1.each do |new_attr_hash|
+        if new_attr_hash[:first_name] == name
+          new_prop_hash = prop_hash.merge(new_attr_hash)
+        end
+      end
+      new_prop_hash
+    end
+  end
+#
 def find_cool(array)
-  array.select{|key, hash|
-    if hash == "cool"
-    puts hash
+  container = []
+  array.each do |element|
+    container << element if element[:temperature] == "cool"
+  end
+  container
 end
 
-def organize_schools(array)
-  array.each do |element|
-    
+#
+def organize_schools(schools)
+  organized_schools = {}
+  schools.each do |name, location_hash|
+    location = location_hash[:location]
+    if organized_schools[location]
+      organized_schools[location] << name
+    else
+      organized_schools[location] = []
+      organized_schools[location] << name
+    end
+  end
+  organized_schools
 end
