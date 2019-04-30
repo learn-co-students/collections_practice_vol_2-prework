@@ -74,7 +74,6 @@ def find_cool(array)
 end
 
 def organize_schools(array)
-  a = 1
   organizedSchools = {}
   array.each do |key, value|
     value.each do |location, school|
