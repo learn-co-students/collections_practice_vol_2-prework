@@ -74,7 +74,8 @@ def find_cool(array)
 end
 
 def organize_schools(array)
-  organizedSchools = {}
+ a = "b"
+ organizedSchools = {}
   array.each do |key, value|
     value.each do |location, school|
     if organizedSchools[school].nil?
