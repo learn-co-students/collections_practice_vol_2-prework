@@ -1,4 +1,30 @@
 require "pry"
+def organize_schools (schools)
+  locs = []
+  locs_hash = {}
+
+  schools.each do |s_key, s_data|
+    s_data.each_value do |loc|
+      locs.push(loc)
+    end
+  end
+  locs.uniq!
+
+  locs.each do |loc|
+    locs_hash[loc] = []
+
+    schools.each do |s_key, s_data|
+      s_data.each_value do |town|
+        if loc == town
+          locs_hash[loc].push(s_key)
+        end
+      end
+    end
+  end
+  return locs_hash
+end
+
+
 def find_cool (ar)
   new_ar = []
 
@@ -11,7 +37,9 @@ def find_cool (ar)
       end
     end
 
-    new_ar.push(new_item)
+    if new_item != {}
+      new_ar.push(new_item)
+    end
   end
   return new_ar
 end
