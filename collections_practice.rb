@@ -54,4 +54,38 @@ def merge_data(array1, array2)
 return new_array
 end
   
-  
+  def find_cool(array)
+    new_array = []
+    array.each do |element|
+      if element[:temperature] == "cool"
+        new_array << element 
+      end
+    end 
+    return new_array
+    
+  end 
+   
+def organize_campuses(array)
+  new_array = []
+  array.each do |element|
+   new_array << element[:location] == element[:campuses]
+    
+  end 
+    
+    return new_array
+end 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
