@@ -65,16 +65,22 @@ end
     
   end 
    
-def organize_campuses(array)
-  new_array = []
-  array.each do |element|
-   new_array << element[:location] == element[:campuses]
+def organize_campuses(hash)
+  new_hash = {}
+
+  hash.each do |campus_name, campus_location|
+    if new_hash[campus_location[:location]]
+      new_hash[campus_location[:location]] << campus_name
+else 
+  new_hash[campus_location[:location]] = [] 
+  new_hash[campus_location[:location]] << campus_name
+  
+ end
+   end
     
-  end 
-    
-    return new_array
+    return new_hash
 end 
-    
+  
     
     
     
