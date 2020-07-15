@@ -1,3 +1,5 @@
+require "pry"
+
 def begins_with_r(array)
   true_or_false = nil 
   array.each do |element|
